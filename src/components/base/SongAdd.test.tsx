@@ -1,14 +1,15 @@
+import { ApolloProvider } from '@apollo/client';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { MockApolloProvider } from '../../mocks/providers';
+import { client } from '../../apollo-client';
 import { SongAdd } from './SongAdd';
 
 describe("SongAdd component", () => {
   beforeEach(() =>
     render(
-      <MockApolloProvider>
+      <ApolloProvider client={client}>
         <SongAdd />
-      </MockApolloProvider>
+      </ApolloProvider>
     )
   );
 
