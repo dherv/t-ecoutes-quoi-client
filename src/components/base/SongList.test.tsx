@@ -12,11 +12,17 @@ describe("SongList component", () => {
     )
   );
 
-  test("should display a name for each song", async () => {
-    expect(await screen.findByText("url_test")).toBeDefined();
+  test("should display each song", async () => {
+    expect(await screen.findByText("song_1")).toBeDefined();
+    expect(await screen.findByText("artist_1")).toBeDefined();
+    expect(await screen.findByText("song_url_1")).toBeDefined();
+    expect(await screen.findByText("song_2")).toBeDefined();
+    expect(await screen.findByText("artist_2")).toBeDefined();
+    expect(await screen.findByText("song_url_2")).toBeDefined();
   });
 
-  test("should display a likes count for each song", async () => {
+  test("should display likes count for each song", async () => {
+    expect(await screen.findByText("likes: 0")).toBeDefined();
     expect(await screen.findByText("likes: 1")).toBeDefined();
   });
 

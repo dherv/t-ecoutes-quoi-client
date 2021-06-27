@@ -5,6 +5,8 @@ import { Song } from './Song';
 describe("Song component", () => {
   const props = { 
     id: "1",
+    name: "name",
+    artist: "artist",
     url: "url",
     likesCount: 2,
     onClick: jest.fn()
@@ -15,6 +17,8 @@ describe("Song component", () => {
   test("should display the props", () => {
     expect(screen.getByText("likes: 2")).toBeDefined()
     expect(screen.getByText("url")).toBeDefined()
+    expect(screen.getByText("name")).toBeDefined()
+    expect(screen.getByText("artist")).toBeDefined()
   })
 
   test("should call onClick", () => {

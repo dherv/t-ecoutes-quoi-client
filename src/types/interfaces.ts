@@ -1,6 +1,8 @@
 export interface ISong {
   id: string;
   url: string;
+  name: string;
+  artist: string;
   type: string;
   duration: string;
   image: string;

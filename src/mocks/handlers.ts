@@ -1,5 +1,6 @@
 // src/mocks/handlers.js
 import { graphql } from 'msw';
+import * as data from './data';
 
 export const handlers = [
   graphql.mutation("SignUp", (req, res, ctx) => {
@@ -24,67 +25,18 @@ export const handlers = [
     );
   }),
 
-  graphql.query("GetUser", (req,res,ctx) => {
+  graphql.query("GetUser", (req, res, ctx) => {
     return res(
       ctx.data({
-        user: {
-          id: "1",
-          name: "Alice",
-          songs : [{
-            id: "1",
-            url: "test_url"
-          }]
-        }
+        user: data.user_1_withsong,
       })
-    )
+    );
   }),
 
   graphql.query("GetSongs", (req, res, ctx) => {
     return res(
       ctx.data({
-        songs: [
-          {
-            id: "1",
-            url: "url_test",
-            type: "type_test",
-            duration: "02:00",
-            image: "image_url",
-            __typename: "Song",
-            user: {
-              id: "1",
-              name: "Alice",
-              __typename: "User",
-            },
-            likes: [
-              {
-                id: "1",
-                __typename: "Like",
-                user: {
-                  id: "1",
-                  __typename: "User",
-                },
-                song: {
-                  id: "1",
-                  __typename: "Song",
-                },
-              },
-            ],
-          },
-          {
-            id: "2",
-            url: "test_me_url",
-            type: "type_test",
-            duration: "02:00",
-            image: "image_url",
-            __typename: "Song",
-            user: {
-              id: "1",
-              name: "Alice",
-              __typename: "User",
-            },
-            likes: [],
-          },
-        ],
+        songs: [data.song_1, data.song_2],
       })
     );
   }),
@@ -92,20 +44,7 @@ export const handlers = [
   graphql.mutation("AddSong", (req, res, ctx) => {
     return res(
       ctx.data({
-        song: {
-          id: "3",
-          url: "song_3",
-          type: "playlist",
-          duration: "02:00",
-          image: "song_3_image",
-          __typename: "Song",
-          user: {
-            id: "1",
-            name: "Alice",
-            __typename: "User",
-          },
-          likes: [],
-        },
+        song: data.song_3,
       })
     );
   }),
@@ -113,16 +52,7 @@ export const handlers = [
   graphql.mutation("AddLike", (req, res, ctx) => {
     return res(
       ctx.data({
-        addLike: {
-          __typename: "Like",
-          id: "1",
-          user: {
-            id: "1",
-          },
-          song: {
-            id: "1",
-          },
-        },
+        addLike: data.like_1,
       })
     );
   }),
@@ -142,19 +72,19 @@ export const handlers = [
   //   console.log("HERERERER")
   //   return res(
   //     ctx.data({
-        // newSong: {
-        //   id: "3",
-        //   url: "new_song",
-        //   type: "new_song",
-        //   duration: "02:00",
-        //   image: "new_song",
-        //   __typename: "Song",
-        //   user: {
-        //     id: "1",
-        //     __typename: "User",
-        //   },
-        //   likes: [],
-        // },
+  // newSong: {
+  //   id: "3",
+  //   url: "new_song",
+  //   type: "new_song",
+  //   duration: "02:00",
+  //   image: "new_song",
+  //   __typename: "Song",
+  //   user: {
+  //     id: "1",
+  //     __typename: "User",
+  //   },
+  //   likes: [],
+  // },
   //     })
   //   );
   // }),

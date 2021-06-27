@@ -105,6 +105,8 @@ export const SongList: FC = () => {
           <Song
             key={song.id}
             id={song.id}
+            name={song.name}
+            artist={song.artist}
             url={song.url}
             likesCount={song.likes.length}
             onClick={handleClick}

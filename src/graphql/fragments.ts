@@ -16,6 +16,8 @@ export const SONG_COMMON_FIELDS = gql`
   fragment SongCommonFields on Song {
     id
     url
+    name
+    artist
     type
     duration
     image
