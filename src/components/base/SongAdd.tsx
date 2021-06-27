@@ -7,21 +7,21 @@ export const SongAdd: FC = () => {
   const [url, setUrl] = useState<string>("");
   const [addSong] = useMutation(ADD_SONG_MUTATION, {
     update: (cache, { data: { song } }) => {
-      const data = cache.readQuery({
-        query: GET_SONGS,
-      }) as any;
-
-      // TODO: refector as it is only to prevent tests from failing on cache.readQuery
-      const existingSongs = data?.songs ?? [];
-
-      cache.writeQuery({
-        query: GET_SONGS,
-        data: {
-          songs: [{ song, __typename: "Song" }, ...existingSongs],
+      cache.modify({
+        fields: {
+          user() { return },
+          songs(existingSongs = []) {
+            cache.writeQuery({
+              query: GET_SONGS,
+              data: {
+                songs: [{ song, __typename: "Song" }, ...existingSongs],
+              },
+            });
+          },
         },
       });
     },
-    onCompleted: () => setUrl(""),
+    onCompleted: () =>  setUrl("")
   });
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setUrl(event.target.value);
@@ -30,6 +30,7 @@ export const SongAdd: FC = () => {
     event.preventDefault();
     addSong({ variables: { url } });
   };
+
   return (
     <form className="box">
       <label className="label" htmlFor="url">

@@ -27,8 +27,14 @@ export const handlers = [
   graphql.query("GetUser", (req,res,ctx) => {
     return res(
       ctx.data({
-        id: 1,
-        name: "Bob"
+        user: {
+          id: "1",
+          name: "Alice",
+          songs : [{
+            id: "1",
+            url: "test_url"
+          }]
+        }
       })
     )
   }),
@@ -45,6 +51,7 @@ export const handlers = [
             image: "image_url",
             __typename: "Song",
             user: {
+              id: "1",
               name: "Alice",
               __typename: "User",
             },
@@ -54,9 +61,11 @@ export const handlers = [
                 __typename: "Like",
                 user: {
                   id: "1",
+                  __typename: "User",
                 },
                 song: {
                   id: "1",
+                  __typename: "Song",
                 },
               },
             ],
@@ -69,6 +78,7 @@ export const handlers = [
             image: "image_url",
             __typename: "Song",
             user: {
+              id: "1",
               name: "Alice",
               __typename: "User",
             },
@@ -83,13 +93,14 @@ export const handlers = [
     return res(
       ctx.data({
         song: {
-          id: "2",
-          url: "test_me_url",
-          type: "type_test",
+          id: "3",
+          url: "song_3",
+          type: "playlist",
           duration: "02:00",
-          image: "image_url",
+          image: "song_3_image",
           __typename: "Song",
           user: {
+            id: "1",
             name: "Alice",
             __typename: "User",
           },
