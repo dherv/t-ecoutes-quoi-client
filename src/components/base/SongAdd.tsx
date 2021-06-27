@@ -16,6 +16,7 @@ export const SongAdd: FC = () => {
               data: {
                 songs: [{ song, __typename: "Song" }, ...existingSongs],
               },
+              variables: { orderBy: {createdAt: 'desc' }}
             });
           },
         },

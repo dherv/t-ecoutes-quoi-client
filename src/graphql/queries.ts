@@ -15,8 +15,8 @@ export const GET_USER = gql`
 `;
 
 export const GET_SONGS = gql`
-  query GetSongs {
-    songs {
+  query GetSongs($orderBy: SongOrderByInput) {
+    songs(orderBy: $orderBy) {
       ...SongCommonFields
     }
   }

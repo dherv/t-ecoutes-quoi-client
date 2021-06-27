@@ -17,7 +17,7 @@ export const SongList: FC = () => {
     data: queryData,
     refetch,
     subscribeToMore,
-  } = useQuery(GET_SONGS);
+  } = useQuery(GET_SONGS, { variables: { orderBy: {createdAt: 'desc' }}});
   const [addLike, { error: mutationError }] = useMutation(ADD_LIKE_MUTATION);
 
   useEffect(() => {
@@ -96,7 +96,7 @@ export const SongList: FC = () => {
   };
 
   if (loading) return <p>loading...</p>;
-  if (error) return <p>Error</p>;
+  if (error) return <p>{error.message}</p>;
 
   return (
     <section className="col-span-2">
