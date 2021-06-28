@@ -33,3 +33,12 @@ export const ADD_LIKE_MUTATION = gql`
   }
   ${LIKES_COMMON_FIELDS}
 `;
+
+export const ADD_FRIEND_MUTATION = gql`
+  mutation AddFriend($email: String!) {
+    addFriend(email: $email) {
+      id 
+      name
+    }
+  }
+`

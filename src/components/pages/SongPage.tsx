@@ -1,6 +1,8 @@
 import { FC } from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_USER } from '../../graphql/queries';
+import { FriendAdd } from '../base/FriendAdd';
+import { FriendList } from '../base/FriendList';
 import { SongAdd } from '../base/SongAdd';
 import { SongList } from '../base/SongList';
 
@@ -18,6 +20,10 @@ export const SongPage: FC = () => {
         </div>
       </div>
       <SongList />
+      <div>
+        <FriendList />
+        <FriendAdd onClick={() => console.log("hey")} />
+      </div>
     </div>
   );
 };

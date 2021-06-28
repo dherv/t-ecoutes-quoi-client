@@ -57,6 +57,14 @@ export const handlers = [
     );
   }),
 
+  graphql.mutation("AddFriend", (req, res, ctx) => {
+    return res(
+      ctx.data({
+        addFriend: data.friend_1,
+      })
+    );
+  }),
+
   // graphql.mutation("AddLike", (req, res, ctx) => {
   //   return res(
   //     ctx.errors([
