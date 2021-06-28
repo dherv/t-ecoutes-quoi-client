@@ -1,6 +1,15 @@
+export const friend_1 = {
+  id: "2",
+  name: "Bob",
+  avatar: "http://placeimg.com/640/480",
+  __typename: "User"
+}
+
 export const user_1 = {
   id: "1",
   name: "Alice",
+  avatar: "http://placeimg.com/640/480",
+  friends: [friend_1],
   __typename: "User",
 };
 
@@ -14,6 +23,8 @@ export const user_1_withsong = {
     },
   ],
 };
+
+
 
 export const song_1 = {
   id: "1",

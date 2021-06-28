@@ -13,6 +13,7 @@ export interface ISong {
 export interface IUser {
   id: string;
   name: string;
+  avatar: string;
 }
 
 export interface ILike {

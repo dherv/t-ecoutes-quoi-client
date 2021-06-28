@@ -6,6 +6,7 @@ export const GET_USER = gql`
     user {
       id
       name
+      avatar
       songs {
         id
         url
