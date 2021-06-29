@@ -76,6 +76,7 @@ export const SongList: FC = () => {
   // refetch on load since logout will clear the cache
   useEffect(() => {
     refetch();
+    return () => {}
   }, [refetch]);
 
   useEffect(() => {
@@ -107,6 +108,7 @@ export const SongList: FC = () => {
             id={song.id}
             name={song.name}
             artist={song.artist}
+            image={song.image}
             url={song.url}
             likesCount={song.likes.length}
             onClick={handleClick}

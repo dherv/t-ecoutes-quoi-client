@@ -14,10 +14,14 @@ describe("SongList component", () => {
 
   test("should display each song", async () => {
     expect(await screen.findByText("song_1")).toBeDefined();
-    expect(await screen.findByText("artist_1")).toBeDefined();
+    expect(
+      await screen.findByAltText(`thumbnail for song: song_1`)
+    ).toBeDefined();
     expect(await screen.findByText("song_url_1")).toBeDefined();
     expect(await screen.findByText("song_2")).toBeDefined();
-    expect(await screen.findByText("artist_2")).toBeDefined();
+    expect(
+      await screen.findByAltText(`thumbnail for song: song_2`)
+    ).toBeDefined();
     expect(await screen.findByText("song_url_2")).toBeDefined();
   });
 

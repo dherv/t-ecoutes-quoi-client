@@ -8,6 +8,7 @@ describe("Song component", () => {
     name: "name",
     artist: "artist",
     url: "url",
+    image: "image",
     likesCount: 2,
     onClick: jest.fn()
   }
@@ -18,7 +19,7 @@ describe("Song component", () => {
     expect(screen.getByText("likes: 2")).toBeDefined()
     expect(screen.getByText("url")).toBeDefined()
     expect(screen.getByText("name")).toBeDefined()
-    expect(screen.getByText("artist")).toBeDefined()
+    expect(screen.getByAltText(`thumbnail for song: ${props.name}`)).toBeDefined()
   })
 
   test("should call onClick", () => {
