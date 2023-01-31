@@ -31,6 +31,7 @@ export const SongAdd: FC = () => {
     event.preventDefault();
     addSong({ variables: { url } });
   };
+  console.log("SongAdd renders")
 
   return (
     <form className="box">

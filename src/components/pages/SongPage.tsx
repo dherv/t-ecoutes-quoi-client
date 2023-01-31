@@ -13,16 +13,20 @@ export const SongPage: FC = () => {
   if (error) return <p>{error.message}</p>;
   return (
     <TemplateApp>
-      <section className="grid grid-cols-4 gap-x-4 items-start">
-        <div>
-          <SongAdd />
+      <section className="sm:grid sm:grid-cols-4 sm:gap-x-4 sm:items-start">
+        <div className="hidden sm:block">
+         
           <div className="box mt-2">
             <p>{data.user.name}</p>
             <p>{`songs count: ${data.user.songs.length}`}</p>
           </div>
         </div>
+        <div className="col-span-2">
+        <SongAdd />
         <SongList />
-        <div>
+        </div>
+      
+        <div className="hidden sm:block">
           <FriendList />
           <FriendAdd onClick={() => console.log("hey")} />
         </div>

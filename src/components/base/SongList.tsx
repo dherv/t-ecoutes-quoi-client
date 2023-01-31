@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import { ADD_LIKE_MUTATION } from '../../graphql/mutations';
 import { GET_SONGS } from '../../graphql/queries';
@@ -90,17 +90,19 @@ export const SongList: FC = () => {
     return () => clearTimeout(timeout);
   }, [mutationError]);
 
-  const handleClick = (songId: string) => {
+  const handleClick = useCallback((songId: string) => {
     addLike({
       variables: { songId },
     }).catch((error) => error);
-  };
+  }, [addLike]);
 
+  console.log("SONGLIST renders")
   if (loading) return <p>loading...</p>;
   if (error) return <p>{error.message}</p>;
 
+
   return (
-    <section className="col-span-2">
+    <section className="mt-2">
       <ul className="shadow-md">
         {queryData.songs.map((song: ISong) => (
           <Song
